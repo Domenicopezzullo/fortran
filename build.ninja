@@ -1,6 +1,6 @@
 
 fc = gfortran
-fflags = -Ofast -Wextra -Wall
+fflags = -Ofast -Wextra -Wall -march=native -mtune=native
 
 
 rule compile
