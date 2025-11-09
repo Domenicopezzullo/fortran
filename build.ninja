@@ -1,0 +1,29 @@
+
+fc = gfortran
+fflags = -Ofast -Wextra -Wall
+
+
+rule compile
+  command = $fc -c $fflags $in -o $out
+  description = Compiling $in to $out
+
+rule link
+  command = $fc $fflags $in -o $out && rm -rf *.mod
+  description = Linking $out from $in
+
+rule clean
+  command = rm -rf $in
+  description = Cleaning up $in
+
+
+
+build obj/string_utils.o: compile src/string_utils.f90
+build obj/char_utils.o: compile src/char_utils.f90
+build obj/main.o: compile src/main.f90 | obj/string_utils.o
+build main: link obj/string_utils.o obj/char_utils.o obj/main.o
+
+
+build clean: clean string_utils.mod char_utils.mod obj/char_utils.o obj/string_utils.o obj/main.o main
+
+
+default main
