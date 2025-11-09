@@ -2,3 +2,4 @@ main
 *.o
 *.mod
 obj/
+.ninja_log
