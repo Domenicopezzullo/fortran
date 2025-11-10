@@ -8,7 +8,7 @@ program main
 
     print '(A)', "String Utils"
     ! string_utils
-   s = string("Hello, world")
+    s = string("Hello, world")
     print '(A,A)', "s = ", s%c_str()
     call s%append(" Hello")
     print '(A,A,A,A)', "s%append("" Hello"") = ", """", s%c_str(), """"
